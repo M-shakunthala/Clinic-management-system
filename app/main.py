@@ -1,9 +1,10 @@
 import logging
 from fastapi import FastAPI, Request
 from fastapi.responses import JSONResponse
+from fastapi.middleware.cors import CORSMiddleware
 from .routes import router
-# from .database import engine
-# from .models import Base
+from .database import engine
+from .models import Base
 
 # STEP 19: Configure Logging
 logging.basicConfig(level=logging.INFO)
@@ -11,8 +12,17 @@ logger = logging.getLogger(__name__)
 
 app = FastAPI(title="Clinic Management System", version="1.0.0")
 
-# Temporarily commented out to test without database
-# Base.metadata.create_all(bind=engine)
+# Configure CORS
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["http://localhost:3000", "http://127.0.0.1:3000"],  # React dev server
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Create database tables automatically
+Base.metadata.create_all(bind=engine)
 
 # STEP 18: Global Exception Handling
 @app.exception_handler(Exception)

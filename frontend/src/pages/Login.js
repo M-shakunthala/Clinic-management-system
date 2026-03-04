@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { Heart, Mail, Lock, Eye, EyeOff } from 'lucide-react';
 import { authService } from '../services/api';
 import toast from 'react-hot-toast';
 
@@ -37,7 +36,24 @@ const Login = ({ onLogin }) => {
       <div className="max-w-md w-full space-y-8">
         <div className="text-center">
           <div className="flex justify-center">
-            <Heart className="h-12 w-12 text-medical-500" />
+            <svg 
+              width="64" 
+              height="64" 
+              viewBox="0 0 24 24" 
+              fill="none" 
+              xmlns="http://www.w3.org/2000/svg"
+              className="text-medical-500"
+            >
+              <path 
+                d="M3 12h2l2-5 4 10 4-10 2 5h4" 
+                stroke="currentColor" 
+                strokeWidth="2" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                fill="none"
+              />
+              <circle cx="12" cy="12" r="1" fill="currentColor"/>
+            </svg>
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
             Welcome to ClinicCare
@@ -65,7 +81,7 @@ const Login = ({ onLogin }) => {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                   />
-                  <Mail className="h-5 w-5 text-gray-400 absolute left-3 top-2.5" />
+                  <i className="fas fa-envelope text-gray-400 absolute left-3 top-2.5"></i>
                 </div>
               </div>
 
@@ -84,13 +100,13 @@ const Login = ({ onLogin }) => {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                   />
-                  <Lock className="h-5 w-5 text-gray-400 absolute left-3 top-2.5" />
+                  <i className="fas fa-lock text-gray-400 absolute left-3 top-2.5"></i>
                   <button
                     type="button"
                     className="absolute right-3 top-2.5 text-gray-400 hover:text-gray-600"
                     onClick={() => setShowPassword(!showPassword)}
                   >
-                    {showPassword ? <EyeOff className="h-5 w-5" /> : <Eye className="h-5 w-5" />}
+                    {showPassword ? <i className="fas fa-eye-slash"></i> : <i className="fas fa-eye"></i>}
                   </button>
                 </div>
               </div>
@@ -106,10 +122,14 @@ const Login = ({ onLogin }) => {
           </div>
         </form>
 
+        {/* Sign up link */}
         <div className="text-center">
           <p className="text-sm text-gray-600">
             Don't have an account?{' '}
-            <Link to="/register" className="text-medical-500 hover:text-medical-600 font-medium">
+            <Link
+              to="/signup"
+              className="font-medium text-medical-600 hover:text-medical-500 transition-colors"
+            >
               Sign up here
             </Link>
           </p>

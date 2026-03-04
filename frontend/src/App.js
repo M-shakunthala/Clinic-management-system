@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { Toaster } from 'react-hot-toast';
 import Navbar from './components/Navbar';
 import Login from './pages/Login';
+import SignUp from './pages/SignUp';
 import Dashboard from './pages/Dashboard';
 import Appointments from './pages/Appointments';
 import Patients from './pages/Patients';
@@ -59,6 +60,13 @@ function App() {
               path="/login"
               element={
                 user ? <Navigate to="/dashboard" /> : <Login onLogin={handleLogin} />
+              }
+            />
+            
+            <Route
+              path="/signup"
+              element={
+                user ? <Navigate to="/dashboard" /> : <SignUp />
               }
             />
             

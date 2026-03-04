@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, Users, Stethoscope, FileText, Clock, TrendingUp } from 'lucide-react';
 import { appointmentService, doctorService, patientService } from '../services/api';
 
 const Dashboard = ({ user }) => {
@@ -39,11 +38,11 @@ const Dashboard = ({ user }) => {
     }
   };
 
-  const StatCard = ({ icon: Icon, title, value, color = "medical" }) => (
+  const StatCard = ({ icon, title, value, color = "medical" }) => (
     <div className="card hover:shadow-lg transition-shadow duration-200">
       <div className="flex items-center">
         <div className={`p-3 rounded-lg bg-${color}-100`}>
-          <Icon className={`h-6 w-6 text-${color}-600`} />
+          <i className={`${icon} text-xl text-${color}-600`}></i>
         </div>
         <div className="ml-4">
           <p className="text-sm font-medium text-gray-600">{title}</p>
@@ -69,25 +68,25 @@ const Dashboard = ({ user }) => {
         {/* Stats Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
           <StatCard
-            icon={Calendar}
+            icon="fas fa-calendar-check"
             title="Total Appointments"
             value={stats.appointments}
             color="medical"
           />
           <StatCard
-            icon={Stethoscope}
+            icon="fas fa-user-md"
             title="Active Doctors"
             value={stats.doctors}
             color="primary"
           />
           <StatCard
-            icon={Users}
+            icon="fas fa-users"
             title="Registered Patients"
             value={stats.patients}
             color="green"
           />
           <StatCard
-            icon={FileText}
+            icon="fas fa-file-medical"
             title="Medical Records"
             value={stats.records}
             color="purple"
@@ -101,7 +100,7 @@ const Dashboard = ({ user }) => {
             <div className="card">
               <div className="flex items-center justify-between mb-4">
                 <h3 className="text-lg font-medium text-gray-900">Recent Appointments</h3>
-                <Clock className="h-5 w-5 text-gray-400" />
+                <i className="fas fa-clock text-gray-400"></i>
               </div>
               
               {loading ? (

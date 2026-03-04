@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Heart, User, LogOut, Calendar, Users, Stethoscope, FileText } from 'lucide-react';
 
 const Navbar = ({ user, onLogout }) => {
   const navigate = useNavigate();
@@ -17,7 +16,24 @@ const Navbar = ({ user, onLogout }) => {
         <div className="flex justify-between h-16">
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-2">
-              <Heart className="h-8 w-8 text-medical-500" />
+              <svg 
+                width="32" 
+                height="32" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                xmlns="http://www.w3.org/2000/svg"
+                className="text-medical-500"
+              >
+                <path 
+                  d="M3 12h2l2-5 4 10 4-10 2 5h4" 
+                  stroke="currentColor" 
+                  strokeWidth="2.5" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                  fill="none"
+                />
+                <circle cx="12" cy="12" r="1" fill="currentColor"/>
+              </svg>
               <span className="text-xl font-bold text-gray-900">ClinicCare</span>
             </Link>
           </div>
@@ -37,7 +53,7 @@ const Navbar = ({ user, onLogout }) => {
                     to="/doctors"
                     className="text-gray-700 hover:text-medical-500 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center space-x-1"
                   >
-                    <Stethoscope className="h-4 w-4" />
+                    <i className="fas fa-user-md"></i>
                     <span>Doctors</span>
                   </Link>
                 )}
@@ -46,7 +62,7 @@ const Navbar = ({ user, onLogout }) => {
                   to="/appointments"
                   className="text-gray-700 hover:text-medical-500 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center space-x-1"
                 >
-                  <Calendar className="h-4 w-4" />
+                  <i className="fas fa-calendar-alt"></i>
                   <span>Appointments</span>
                 </Link>
                 
@@ -55,7 +71,7 @@ const Navbar = ({ user, onLogout }) => {
                     to="/patients"
                     className="text-gray-700 hover:text-medical-500 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center space-x-1"
                   >
-                    <Users className="h-4 w-4" />
+                    <i className="fas fa-users"></i>
                     <span>Patients</span>
                   </Link>
                 )}
@@ -65,7 +81,7 @@ const Navbar = ({ user, onLogout }) => {
                     to="/medical-records"
                     className="text-gray-700 hover:text-medical-500 px-3 py-2 rounded-md text-sm font-medium transition-colors flex items-center space-x-1"
                   >
-                    <FileText className="h-4 w-4" />
+                    <i className="fas fa-file-medical"></i>
                     <span>Records</span>
                   </Link>
                 )}
@@ -73,7 +89,7 @@ const Navbar = ({ user, onLogout }) => {
 
               <div className="flex items-center space-x-3">
                 <div className="flex items-center space-x-2 text-sm text-gray-700">
-                  <User className="h-4 w-4" />
+                  <i className="fas fa-user"></i>
                   <span>{user.email}</span>
                   <span className="bg-medical-100 text-medical-700 px-2 py-1 rounded-full text-xs font-medium capitalize">
                     {user.role}
@@ -84,7 +100,7 @@ const Navbar = ({ user, onLogout }) => {
                   className="text-gray-400 hover:text-gray-600 transition-colors"
                   title="Logout"
                 >
-                  <LogOut className="h-5 w-5" />
+                  <i className="fas fa-sign-out-alt"></i>
                 </button>
               </div>
             </div>
